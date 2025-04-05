@@ -212,7 +212,7 @@ def main(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Training or evaluation parameters.")
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--num_epochs", type=int, default=10)
+    parser.add_argument("--num_epochs", type=int, default=20)
     parser.add_argument("--batch_size", type=int, default=8)
     parser.add_argument("--base_model_name", type=str, default="FacebookAI/xlm-roberta-base")
     parser.add_argument("--tuned_model_name", type=str, default="formality_model")
