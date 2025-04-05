@@ -42,7 +42,7 @@ def prepare_data(dataset_name: str, num_samples: int = 1000):
 
     else:
         raise NotImplementedError(
-            f"Dataset can be either `pavlick_formality` or `in_formal_sentences` or `polish-formality-dataset`, the provided dataset name {dataset_name} is invalid!"
+            f"Dataset can be either `pavlick_formality` or `in_formal_sentences`, the provided dataset name {dataset_name} is invalid!"
         )
 
     train_val, test = sampled_data.train_test_split(test_size=0.2, seed=seed).values()
@@ -60,7 +60,12 @@ def prepare_data(dataset_name: str, num_samples: int = 1000):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Parameters for preparing the dataset.")
-    parser.add_argument("--dataset_name", type=str, default="pavlick_formality")
+    parser.add_argument(
+        "--dataset_name",
+        type=str,
+        default="pavlick_formality",
+        choices=["pavlick_formality", "in_formal_sentences"],
+    )
     parser.add_argument("--num_samples", type=int, default=1000)
 
     args = parser.parse_args()
