@@ -32,10 +32,10 @@ def evaluate_formality(input_path: str) -> Dict[str, float]:
     # Spearman Correlation
     spearman_corr, _ = spearmanr(y_true, y_pred)
     return {
-        "Pearson Correlation": pearson_corr,
-        "Spearman Correlation": spearman_corr,
-        "MAE": mae,
-        "RMSE": rmse,
+        "Pearson Correlation": round(pearson_corr, 4),
+        "Spearman Correlation": round(spearman_corr, 4),
+        "MAE": round(mae, 4),
+        "RMSE": round(rmse, 4),
     }
 
 
