@@ -1,0 +1,17 @@
+pre-commit
+torch==2.6.0
+transformers==4.50.1
+auto-gptq==0.7.1
+accelerate
+optimum
+vllm
+scikit-learn
+matplotlib
+datasets
+seaborn
+pandas
+numpy
+spacy
+nltk
+scipy
+textstat
