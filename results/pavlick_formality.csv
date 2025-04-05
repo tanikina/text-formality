@@ -1,0 +1,8 @@
+,Pearson Correlation,Spearman Correlation,MAE,RMSE
+syntactic_complexity,0.5366,0.5479,0.2245,0.274
+heylighen_score,0.3631,0.3472,0.1871,0.2429
+avg_readability_score,0.5804,0.5792,0.1516,0.1895
+qwen7b,0.7629,0.7325,0.1577,0.1982
+lexical_diversity,-0.2736,-0.3302,0.4094,0.4765
+finetuned_xlmr,0.7491,0.7397,0.1244,0.1567
+llama8b,0.6594,0.6574,0.1475,0.1908
