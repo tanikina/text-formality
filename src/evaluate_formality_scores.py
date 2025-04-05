@@ -1,4 +1,6 @@
 import argparse
+import os
+from pathlib import Path
 from typing import Dict
 
 import numpy as np
@@ -44,6 +46,20 @@ if __name__ == "__main__":
     parser.add_argument(
         "--input_path", type=str, default="data/in_formal_sentences/annotated/llama8b_test.csv"
     )
-    parsed_args = parser.parse_args()
-    res = evaluate_formality(parsed_args.input_path)
-    print(res)
+    parser.add_argument("--all", action="store_true")
+    args = parser.parse_args()
+    if args.all:
+        for dataset_name in ["in_formal_sentences", "pavlick_formality"]:
+            input_dir = f"data/{dataset_name}"
+            eval_results = dict()
+            for fname in os.listdir(f"{input_dir}/annotated"):
+                eval_results[fname.replace("_test.csv", "")] = evaluate_formality(
+                    f"{input_dir}/annotated/{fname}"
+                )
+            df = pd.DataFrame(eval_results)
+            output_path = f"results/{dataset_name}.csv"
+            Path(output_path).parent.absolute().mkdir(parents=True, exist_ok=True)
+            df.T.to_csv(output_path)
+    else:
+        res = evaluate_formality(args.input_path)
+        print(res)
