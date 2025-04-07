@@ -71,8 +71,9 @@ def compute_readability_score(text, normalize=True) -> Dict[str, float]:
         Flesch Reading Ease, Flesch-Kincaid Grade Level, Gunning Fog Index, and Automated Readability Index.
 
     """
-    flesch_score = textstat.flesch_reading_ease(text)  # Flesch Reading Ease
-    flesch_score = crop_range(flesch_score, 0, 100)
+    flesch_score = 100 - crop_range(
+        textstat.flesch_reading_ease(text), 0, 100
+    )  # Flesch Reading Ease, higher score means easier text
     flesch_kincaid_score = textstat.flesch_kincaid_grade(text)  # Flesch-Kincaid Grade Level
     flesch_kincaid_score = crop_range(flesch_kincaid_score, 0, 12)
     gunning_fox_index = textstat.gunning_fog(text)  # Gunning Fog Index
@@ -81,10 +82,10 @@ def compute_readability_score(text, normalize=True) -> Dict[str, float]:
     ari_score = crop_range(ari_score, 0, 14)
     if normalize:
         return {
-            "flesch_score": normalize_score(flesch_score, 0, 100),
-            "flesch_kincaid_score": normalize_score(flesch_kincaid_score, 0, 12),
-            "gunning_fox_index": normalize_score(gunning_fox_index, 6, 20),
-            "automated_readability_index": normalize_score(ari_score, 0, 14),
+            "flesch_score": normalize_score(flesch_score, 0, 100)["label"],
+            "flesch_kincaid_score": normalize_score(flesch_kincaid_score, 0, 12)["label"],
+            "gunning_fox_index": normalize_score(gunning_fox_index, 6, 20)["label"],
+            "automated_readability_index": normalize_score(ari_score, 0, 14)["label"],
         }
     else:
         return {
