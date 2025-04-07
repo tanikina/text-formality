@@ -76,7 +76,7 @@ You can run the same script also with `model_name="Qwen/Qwen2.5-7B-Instruct-GPTQ
 
 ## Traditional Methods
 
-We provide the script to the script to compute the following formality-related metrics:
+We provide the script to compute the following formality-related metrics:
 
 - **F-score** based on Heylighen & Dewaele
   ```
@@ -116,7 +116,7 @@ We provide the script to the script to compute the following formality-related m
 
 ## Evaluation and Visualization
 
-To compute correlation metrics for all datasets and settings you can run:
+To compute correlation metrics for all datasets and settings at once you can run:
 `python src/evaluate_formality_scores.py --all`
 
 To visualize score deistributions and compare llm-based and traditional approaches for different datasets, please run:
